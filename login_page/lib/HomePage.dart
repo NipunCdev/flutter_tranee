@@ -1,34 +1,70 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
 
-class _HomePageState extends State<HomePage> {
+
+class HomePage extends StatelessWidget {
+  static String tag = 'home-page';
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home Page'),
-      ),
-      body: Center(
-        child: Container(
-          height: 80,
-          width: 150,
-          decoration: BoxDecoration(
-              color: Colors.blue, borderRadius: BorderRadius.circular(10)),
-          child: FlatButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text(
-              'Welcome',
-              style: TextStyle(color: Colors.white, fontSize: 25),
-            ),
-          ),
+
+    final alucard = Hero(
+      tag: 'hero',
+      child: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: CircleAvatar(
+          radius: 72.0,
+          backgroundColor: Colors.transparent,
+          backgroundImage: AssetImage('assets/images/Untitled-1.png'),
         ),
       ),
     );
+
+    final welcome = Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Text(
+        'Welcome',
+        style: TextStyle(fontSize: 28.0, color: Colors.white),
+      ),
+    );
+
+    final nipun = Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Text(
+        "I'm Nipun Chamika",
+        style: TextStyle(fontSize: 28.0, color: Colors.white),
+      ),
+    );
+
+    final lorem = Padding(
+      padding: EdgeInsets.all(8.0),
+      child: Text(
+        "Beginner | Undergraduate Student In Software Engineering | Addicted 🥵 | Graphic Designer",
+        style: TextStyle(fontSize: 16.0, color: Colors.white),
+      ),
+    );
+
+    final body = Container(
+      width: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.all(28.0),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(colors: [
+          Colors.blue,
+          Colors.lightBlueAccent,
+        ]),
+      ),
+      child: Column(
+        children: <Widget>[alucard, welcome,nipun, lorem],
+      ),
+    );
+
+    return Scaffold(
+        backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text("Profile"),
+      ),
+      body: body,
+    );
   }
 }
+
